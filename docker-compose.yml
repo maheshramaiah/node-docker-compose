@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  client:
+    build: ./client
+    ports:
+      - 3000:3000
+    volumes:
+      - './client:/usr/src/app'
+
+  server:
+    build: ./server
+    ports:
+      - 4200:4200
+    volumes:
+      - './server:/usr/src/app'
+    links:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db

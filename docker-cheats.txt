@@ -1,0 +1,3 @@
+To delete untagged images: docker rmi $(docker images | grep "^<none>")
+
+eval $(minikube docker-env)
